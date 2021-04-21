@@ -15,7 +15,7 @@ class CreateFormationTable extends Migration
     {
         Schema::create('formation', function (Blueprint $table) {
             $table->id();
-            $table->string('intitule');
+            $table->string('intitule')->nullable();
             $table->timestamps();
         });
     }

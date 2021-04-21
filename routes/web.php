@@ -13,6 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+//login
+Route::get('/','AuthController@getLogin')->name('login');
+Route::post('/','AuthController@login')->name('postLogin');
+Route::get('/logout','AuthController@logout')->name('logout');
+Route::get('/signup','AuthController@getSignup')->name('getsignup');
+Route::post('/signup','AuthController@signup')->name('signup');
+
+Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
+
+});
+
+Route::middleware(['checktype:student'])->prefix('student')->group(function(){
+
+});
+
+
+//lecture
+Route::middleware(['checktype:teacher'])->prefix('lecture')->group(function(){
+
+
 });
