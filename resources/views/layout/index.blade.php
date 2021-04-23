@@ -21,7 +21,7 @@
 </head>
 
 <body>
-@include('navbar')
+@include('admin.navbar')
 @yield('content')
 
 <!-- JavaScript -->

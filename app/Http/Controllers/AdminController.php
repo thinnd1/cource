@@ -37,7 +37,7 @@ class AdminController extends Controller
 
     public function getCreateUser()
     {
-
+        return view("admin/home");
     }
 
     public function createUser(Request $request)

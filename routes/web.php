@@ -24,6 +24,9 @@ Route::get('/logout','AuthController@logout')->name('logout');
 Route::get('/signup','AuthController@getSignup')->name('getsignup');
 Route::post('/signup','AuthController@signup')->name('signup');
 
+
+Route::get('/getCreateUser','AdminController@getCreateUser')->name('getCreateUser');
+
 Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
 
 });
