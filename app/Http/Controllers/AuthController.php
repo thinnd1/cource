@@ -37,16 +37,16 @@ class AuthController extends Controller
             // check xem user này thuộc cái nào. và chuyển hướng tới cái đó.
 
             if (Auth::user()->user_type == User::ADMIN) {
-                return redirect()->route('getuser')->with('key', 'Đăng nhập thành công');
+                return redirect()->route('getListUser')->with('key', 'Login Successful');
             }
             elseif (Auth::user()->user_type == User::TEACHER) {
-                return redirect()->route('listtopic')->with('key', 'Đăng nhập thành công');
+                return redirect()->route('getInformationLecture')->with('key', 'Login Successful');
             }
             elseif (Auth::user()->user_type == User::STUDENT) {
-                return redirect()->route('gettopic')->with('key', 'Đăng nhập thành công');
+                return redirect()->route('getInformationStudent')->with('key', 'Login Successful');
             }
         } else {
-            return redirect()->route('login')->with('error', 'Sai username hoặc mật khẩu');
+            return redirect()->route('login')->with('error', 'Wrong user or password');
         }
     }
 

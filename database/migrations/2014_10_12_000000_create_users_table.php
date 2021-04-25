@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('user_type')->nullable();
             $table->date('birthday')->nullable();
             $table->string('email')->unique();
-            $table->boolean('active_flg');
+            $table->boolean('active_flg')->nullable();
             $table->string('password');
             $table->timestamps();
         });

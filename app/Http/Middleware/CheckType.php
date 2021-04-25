@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CheckType
 {
@@ -34,7 +35,7 @@ class CheckType
     protected function admin($request, $next) {
         $user = Auth::user();
         // Neu ko dung role thi chuyen ve` login
-        if ($user->user_type !== self::ADMIN) {
+        if ($user->user_type != self::ADMIN) {
             return redirect()->route('login');
         }
         return $next($request);
@@ -43,7 +44,7 @@ class CheckType
     protected function student($request, $next) {
         $user = Auth::user();
         // Neu ko dung role thi chuyen ve` login
-        if ($user->user_type !== self::STUDENT) {
+        if ($user->user_type != self::STUDENT) {
             return redirect()->route('login');
         }
 
@@ -53,7 +54,7 @@ class CheckType
     protected function teacher($request, $next) {
         $user = Auth::user();
         // Neu ko dung role thi chuyen ve` login
-        if ($user->user_type !== self::TEACHER) {
+        if ($user->user_type != self::TEACHER) {
             return redirect()->route('login');
         }
         return $next($request);

@@ -30,14 +30,17 @@ class AdminController extends Controller
         $this->planning = $planning;
     }
 
-    public function getListUser()
+    public function getListUser(Request $request)
     {
-        $user = $this->user->getAllUser();
+        $id = Auth::user()->id;
+        $search = trim($request->input('search_account'));
+        $users = $this->user->getAllUser($id, $search);
+        return view('admin.home', compact('users'));
     }
 
     public function getCreateUser()
     {
-        return view("admin/home");
+        return view("admin/createuser");
     }
 
     public function createUser(Request $request)
@@ -45,51 +48,53 @@ class AdminController extends Controller
         $createUser = $request->all();
         $this->user->createUser($createUser);
 
-        return redirect()->route('')->with('key', 'Cập nhật thông tin thành công');
+        return redirect()->route('getListUser')->with('key', 'Create User successful');
     }
 
     public function getUpdateUser($id)
     {
         $editinfor = $this->user->getDetail($id);
-        return view('', ['editinfor' => $editinfor]);
+        return view('admin/updateuser', ['editinfor' => $editinfor]);
     }
 
     public function updateUser(Request $request, $id)
     {
         $updateUser = $request->all();
         $this->user->updateUser($updateUser, $id);
-        return redirect()->route('')->with('key', 'Cập nhật thông tin thành công');
+        return redirect()->route('getListUser')->with('key', 'Cập nhật thông tin thành công');
+    }
+
+    public function getInformation()
+    {
+        $id = Auth::user()->id;
+        $information = $this->user->getDetail($id);
+        return view('admin/myinformation', ['information' => $information]);
     }
 
     public function getUpdateInformation()
     {
         $editinfor = $this->user->getDetail(Auth::user()->id);
-        return view('', ['editinfor' => $editinfor]);
-    }
-
-    public function updateInformation(Request $request, $id)
-    {
-        $updateInformation = $request->all();
-        $id = Auth::user()->id;
-        $this->user->updateUser($updateInformation, $id);
-        return redirect()->route('')->with('key', 'Cập nhật thông tin thành công');
+        return view('admin/editformation', ['editinfor' => $editinfor]);
     }
 
     public function deleteUser($id)
     {
         $this->user->deleteUser($id);
-        return redirect()->route('')->with('key', 'Đã xóa thành viên');
+        return redirect()->route('getListUser')->with('key', 'User deleted');
     }
 
     public function getConfirm()
     {
-        $user = $this->user->getUserConfirm();
+        $users = $this->user->getUserConfirm();
+        return view('admin/confirmregister', ['users'  => $users]);
     }
 
 // xac nhan dang ky thanh cong hay ko
-    public function acceptRegiter(Request $request)
+    public function acceptRegiter(Request $request, $id)
     {
-
+        $active_flg = $request->active_flg;
+        $this->user->confirmUser($id, $active_flg);
+        return redirect('getconfirm');
     }
 
 // manage cource
@@ -122,7 +127,7 @@ class AdminController extends Controller
     public function deleteCource($id)
     {
         $this->cource->deleteCource($id);
-        return redirect()->route('getuser')->with('key', 'Đã xóa thành viên');
+        return redirect()->route('getListUser')->with('key', 'Đã xóa thành viên');
     }
 
     // quan ly dao tao
@@ -154,7 +159,7 @@ class AdminController extends Controller
     public function deleteFormation($id)
     {
         $this->cource->deleteCource($id);
-        return redirect()->route('getuser')->with('key', 'Đã xóa thành viên');
+        return redirect()->route('getListUser')->with('key', 'Đã xóa thành viên');
     }
 
 // manage planning
@@ -186,6 +191,6 @@ class AdminController extends Controller
     public function deletePlaning($id)
     {
         $this->planning->deletePlanning($id);
-        return redirect()->route('getuser')->with('key', 'Đã xóa thành viên');
+//        return redirect()->route('getListUser')->with('key', 'Đã xóa thành viên');
     }
 }

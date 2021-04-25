@@ -1,5 +1,5 @@
 @extends('layout.index')
-@section('title', 'List User')
+@section('title', 'List Cour')
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @section('content')
 
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>List User</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> List Cour</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="coL-lg-6 h2">
-                            List User
+                            List Cour
                         </div>
                     </div>
 
@@ -26,7 +26,7 @@
                             <form action="">
                                 <div class="col-lg-6">
                                     <input type="text" name="search_account" class="form-control"
-                       n                    placeholder="Search ..."
+                                           placeholder="Tìm theo tên, email, số điện thoại ..."
                                            value="{{ request()->input('search_account', old('search_account')) }}"
                                            id="inputname">
                                 </div>
@@ -36,9 +36,10 @@
 
                                 </div>
                             </form>
+
                         </div>
 
-                        <h3>Total User: {{ count($users) }} </h3>
+                        <h3>Tổng số tài khoản: {{ count($users) }} </h3>
                         <table class="table table-bordered table-hover tablesorter">
                             <thead>
                             <tr>
@@ -47,7 +48,6 @@
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Email</th>
-                                <th>Role</th>
                                 <th>Created date</th>
                                 <th width="10%">Hành động</th>
                             </tr>
@@ -63,33 +63,12 @@
                                         <td>{{ $index }}</td>
                                         <td>
                                             <div class="divide-column">
-                                                {{ $user->username }}
+                                                {{ $user->title }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="divide-column">
-                                                {{ $user->first_name }}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="divide-column">
-                                                {{ $user->last_name }}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="divide-column">
-                                                {{ $user->email }}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="divide-column">
-                                                @if($user->user_type == 1)
-                                                    Etudiant
-                                                @elseif ($user->user_type == 2)
-                                                    Enseignant
-                                                @else
-                                                    Admin
-                                                @endif
+                                                {{ $user->code_cour }}
                                             </div>
                                         </td>
 
@@ -98,11 +77,17 @@
                                                 {{ \Carbon\Carbon::parse($user->created_at)->format('d-m-Y') }}
                                             </div>
                                         </td>
+
                                         <div class="divide-column">
                                             <td>
-                                                <a class="btn btn-warning" href="{{ route('getUpdateUser', ['id' => $user->id ]) }}">Sửa</a>
-
-                                                <a href="{{ route('deleteUser', ['id' => $user->id ]) }}" class="btn btn-danger">Xóa</a>
+                                                <a class="btn btn-warning"
+                                                    {{--                                                       href="{{ route('edituser', ['id' => $user->id ]) }}--}}
+                                                >
+                                                    Sửa
+                                                </a>
+                                                <button type="button" class="btn btn-danger deleteuser" data-id="1">
+                                                    Xóa
+                                                </button>
                                             </td>
                                         </div>
                                     </tr>
