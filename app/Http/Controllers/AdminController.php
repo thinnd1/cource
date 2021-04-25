@@ -100,66 +100,76 @@ class AdminController extends Controller
 // manage cource
     public function getCreateCource()
     {
-
+        return view('admin/createcour');
     }
 
     public function createCource(Request $request)
     {
-
+        $cource = $request->all();
+        $this->cource->createCour($cource);
+        return redirect()->route('getCource');
     }
 
     public function getCource()
     {
-
+        $cources = $this->cource->getCource();
+        return view('admin/getcour', ['cources'  => $cources]);
     }
 
-    public function getUpdateCource()
+    public function getUpdateCource($id)
     {
-        return view('teacher.updateinformation', ['editinfor' => $editinfor]);
+        $cources = $this->cource->getDetail($id);
+        return view('admin/updatecour', ['cources' => $cources]);
     }
 
-
-    public function updateCource(Request $request)
+    public function updateCource(Request $request, $id)
     {
-
+        $cource = $request->all();
+        $this->cource->updateCource($id, $cource);
+        return redirect()->route('getCource');
     }
 
     public function deleteCource($id)
     {
         $this->cource->deleteCource($id);
-        return redirect()->route('getListUser')->with('key', 'Đã xóa thành viên');
+        return redirect()->route('getCource')->with('key', 'Delete successful');
     }
 
     // quan ly dao tao
     public function getFormation()
     {
-
+        $formation = $this->formation->getFormation();
+        return view('admin/formation', ['formation' => $formation]);
     }
 
     public function getCreateFormation()
     {
-
+        return view('admin/createformation');
     }
 
     public function createFormation(Request $request)
     {
-
+        $formation = $request->all();
+        $this->formation->createFormation($formation);
+        return redirect()->route('');
     }
 
     public function getUpdateFormation()
     {
-
+        return view('admin/editformation');
     }
 
-    public function updateFormation(Request $request)
+    public function updateFormation(Request $request, $id)
     {
-
+        $formation = $request->all();
+        $this->formation->updateFormation($id, $formation);
+        return redirect()->route('');
     }
 
     public function deleteFormation($id)
     {
         $this->cource->deleteCource($id);
-        return redirect()->route('getListUser')->with('key', 'Đã xóa thành viên');
+        return redirect()->route('getListUser')->with('key', 'Delete Successful');
     }
 
 // manage planning

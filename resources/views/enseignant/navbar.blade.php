@@ -9,7 +9,7 @@
                 <li><a href=""><i class="fa fa-dashboard"></i> Confirm User </a></li>
                 <li><a href=""><i class="fa fa-bar-chart-o"></i> Quản lý đơn hàng </a></li>
                 <li><a href=""><i class="fa fa-bar-chart-o"></i> Quản lý Công ty </a></li>
-                <li><a href="{{ route('logout') }}" onclick="return confirm('Bạn chắc chắn muốn đăng xuất ?')"><i class="fa fa-table"></i> Đăng xuất </a></li>
+                <li><a href="{{ route('logout') }}" onclick="return confirm('Are you sure logout ?')"><i class="fa fa-table"></i> Log Out </a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

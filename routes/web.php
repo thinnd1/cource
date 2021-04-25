@@ -20,6 +20,26 @@ Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
     Route::get('/deleteuser/{id}','AdminController@deleteUser')->name('deleteUser');
     Route::get('/getconfirm','AdminController@getConfirm')->name('getConfirm');
 
+    Route::get('/getcreatecource','AdminController@getCreateCource')->name('getCreateCource');
+    Route::post('/createcource','AdminController@createCource')->name('createCource');
+    Route::get('/getcource','AdminController@getCource')->name('getCource');
+    Route::get('/getupdatecource/{id}','AdminController@getUpdateCource')->name('getUpdateCource');
+    Route::post('/updatecource/{id}','AdminController@updateCource')->name('updateCource');
+    Route::get('/deletecource/{id}','AdminController@deleteCource')->name('deleteCource');
+
+    Route::get('/getformation','AdminController@getFormation')->name('getFormation');
+    Route::get('/getcreateformation','AdminController@getCreateFormation')->name('getCreateFormation');
+    Route::post('/createformation','AdminController@createFormation')->name('createFormation');
+    Route::get('/getupdateformation/{id}','AdminController@getUpdateFormation')->name('getUpdateFormation');
+    Route::post('/updateformation/{id}','AdminController@createFormation')->name('updateFormation');
+    Route::get('/deleteformation/{id}','AdminController@deleteFormation')->name('deleteFormation');
+
+    Route::get('/getplanning','AdminController@getPlanning')->name('getPlanning');
+    Route::get('/getcreateplanning','AdminController@getCreatePlanning')->name('getCreatePlanning');
+    Route::post('/createplanning','AdminController@createPlanning')->name('createPlanning');
+    Route::get('/getupdateplanning/{id}','AdminController@getUpdatePlanning')->name('getUpdatePlanning');
+    Route::post('/updateplanning/{id}','AdminController@updatePlaning')->name('updatePlaning');
+    Route::get('/deletePlaning/{id}','AdminController@deletePlaning')->name('deletePlaning');
 
 });
 // student

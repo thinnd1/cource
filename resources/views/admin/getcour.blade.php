@@ -26,68 +26,65 @@
                             <form action="">
                                 <div class="col-lg-6">
                                     <input type="text" name="search_account" class="form-control"
-                                           placeholder="Tìm theo tên, email, số điện thoại ..."
+                                           placeholder="Search ..."
                                            value="{{ request()->input('search_account', old('search_account')) }}"
                                            id="inputname">
                                 </div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-                                    <a href="{{ route('getCreateUser') }}" class="btn btn-primary">Add User</a>
-
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                    <a href="{{ route('getCreateCource') }}" class="btn btn-primary">Add Cour</a>
                                 </div>
                             </form>
-
                         </div>
 
-                        <h3>Tổng số tài khoản: {{ count($users) }} </h3>
+                        <h3>Tổng số tài khoản: {{ count($cources) }} </h3>
                         <table class="table table-bordered table-hover tablesorter">
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Username</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Email</th>
+                                <th>Title</th>
+                                <th>Code cour</th>
+                                <th>Address</th>
                                 <th>Created date</th>
-                                <th width="10%">Hành động</th>
+                                <th width="10%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @if(count($users) == 0)
+                            @if(count($cources) == 0)
                                 <tr class="borderless">
                                     <td colspan="11" class="text-center">Không có dữ liệu</td>
                                 </tr>
                             @else
-                                @foreach ($users as $index => $user)
+                                @foreach ($cources as $index => $cource)
                                     <tr>
-                                        <td>{{ $index }}</td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>
                                             <div class="divide-column">
-                                                {{ $user->title }}
+                                                {{ $cource->title }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="divide-column">
-                                                {{ $user->code_cour }}
+                                                {{ $cource->code_cour }}
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="divide-column">
-                                                {{ \Carbon\Carbon::parse($user->created_at)->format('d-m-Y') }}
+                                                {{ $cource->address }}
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="divide-column">
+                                                {{ \Carbon\Carbon::parse($cource->created_at)->format('d-m-Y') }}
                                             </div>
                                         </td>
 
                                         <div class="divide-column">
                                             <td>
-                                                <a class="btn btn-warning"
-                                                    {{--                                                       href="{{ route('edituser', ['id' => $user->id ]) }}--}}
-                                                >
-                                                    Sửa
-                                                </a>
-                                                <button type="button" class="btn btn-danger deleteuser" data-id="1">
-                                                    Xóa
-                                                </button>
+                                                <a class="btn btn-warning" href="{{ route('getUpdateCource', ['id' => $cource->id ]) }}">Edit</a>
+                                                <a href="{{ route('deleteCource', ['id' => $cource->id ]) }}" class="btn btn-danger"> Delete </a>
                                             </td>
                                         </div>
                                     </tr>
