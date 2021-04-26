@@ -138,8 +138,8 @@ class AdminController extends Controller
     // quan ly dao tao
     public function getFormation()
     {
-        $formation = $this->formation->getFormation();
-        return view('admin/formation', ['formation' => $formation]);
+        $formations = $this->formation->getFormation();
+        return view('admin/formation', ['formations' => $formations]);
     }
 
     public function getCreateFormation()
@@ -151,12 +151,13 @@ class AdminController extends Controller
     {
         $formation = $request->all();
         $this->formation->createFormation($formation);
-        return redirect()->route('');
+        return redirect()->route('getFormation');
     }
 
-    public function getUpdateFormation()
+    public function getUpdateFormation($id)
     {
-        return view('admin/editformation');
+        $formation = $this->formation->getDetail($id);
+        return view('admin/editformation', ['formation' => $formation]);
     }
 
     public function updateFormation(Request $request, $id)

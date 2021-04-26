@@ -7,8 +7,8 @@
                 <li><a href="{{ route('getInformation') }}"><i class="fa fa-dashboard"></i> My Information </a></li>
                 <li><a href="{{ route('getListUser') }}"><i class="fa fa-dashboard"></i> Manage User </a></li>
                 <li><a href="{{ route('getConfirm') }}"><i class="fa fa-dashboard"></i> Confirm User </a></li>
-                <li><a href="{{ route('getCreateCource') }}"><i class="fa fa-bar-chart-o"></i> Manage Cour </a></li>
-                <li><a href=""><i class="fa fa-bar-chart-o"></i> Quản lý Công ty </a></li>
+                <li><a href="{{ route('getCource') }}"><i class="fa fa-bar-chart-o"></i> Manage Cour </a></li>
+                <li><a href="{{ route('getFormation') }}"><i class="fa fa-bar-chart-o"></i> Quản lý Khoa Hoc </a></li>
                 <li><a href="{{ route('logout') }}" onclick="return confirm('Are you sure logout ?')"><i class="fa fa-table"></i> Log Out </a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

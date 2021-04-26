@@ -16,7 +16,7 @@ Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
     Route::get('/getcreateuser','AdminController@getCreateUser')->name('getCreateUser');
     Route::post('/createuser','AdminController@createUser')->name('createUser');
     Route::get('/getupdateuser/{id}','AdminController@getUpdateUser')->name('getUpdateUser');
-    Route::post('/updateuser/{id}','AdminController@updateUser')->name('updateUser');
+    Route::post('/updateuser/{id}','AdminControgetcourceller@updateUser')->name('updateUser');
     Route::get('/deleteuser/{id}','AdminController@deleteUser')->name('deleteUser');
     Route::get('/getconfirm','AdminController@getConfirm')->name('getConfirm');
 

@@ -25,8 +25,7 @@
                         <div class="row">
                             <form action="">
                                 <div class="col-lg-6">
-                                    <input type="text" name="search_account" class="form-control"
-                       n                    placeholder="Search ..."
+                                    <input type="text" name="search_account" class="form-control" placeholder="Search ..."
                                            value="{{ request()->input('search_account', old('search_account')) }}"
                                            id="inputname">
                                 </div>

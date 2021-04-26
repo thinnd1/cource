@@ -37,7 +37,7 @@
                             </form>
                         </div>
 
-                        <h3>Tổng số tài khoản: {{ count($cources) }} </h3>
+                        <h3> List Cour: {{ count($cources) }} </h3>
                         <table class="table table-bordered table-hover tablesorter">
                             <thead>
                             <tr>

@@ -9,8 +9,14 @@ class Formation extends Model
     protected $table = 'formation';
 
     protected $fillable = [
-        'title'
+        'intitule'
     ];
+
+    public function getDetail($id)
+    {
+        return Formation::where('id', $id)
+            ->first();
+    }
 
     public function getFormation($search = null)
     {
@@ -19,7 +25,7 @@ class Formation extends Model
 
         if ($search) {
             $formation = Formation::orderBy('created_at', 'DESC')
-                ->where('title', 'like', '%' . $search . '%')
+                ->where('intitule', 'like', '%' . $search . '%')
                 ->get();
         }
 
@@ -29,14 +35,14 @@ class Formation extends Model
     public function createFormation($request)
     {
         $formation = new Formation();
-        $formation->title = $request['title'];
+        $formation->intitule = $request['intitule'];
         $formation->save();
     }
 
     public function updateFormation($id, $request)
     {
         $formation = Formation::findOrFail($id);
-        $formation->title = $request['title'];
+        $formation->intitule = $request['intitule'];
         $formation->save();
     }
 
