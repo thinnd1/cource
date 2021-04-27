@@ -12,9 +12,9 @@ class User extends Authenticatable
     use Notifiable;
 
     const USER_ACTIVE = true;
-    const STUDENT = 1;
-    const TEACHER = 2;
-    const ADMIN = 3;
+    const STUDENT = 'etudiant';
+    const TEACHER = 'enseignant';
+    const ADMIN = 'admin';
 
     /**
      * The attributes that are mass assignable.
@@ -47,6 +47,10 @@ class User extends Authenticatable
     {
         return User::where('active_flg','<>', self::USER_ACTIVE)
             ->get();
+    }
+    public function getTeacher()
+    {
+
     }
 
     public function getAllUser($id, $search = null)
@@ -81,6 +85,17 @@ class User extends Authenticatable
         $user->active_flg = 1;
         $user->password = Hash::make($request['password']);
         $user->email = $request['email'];
+
+        $user->save();
+    }
+
+    public function register($request)
+    {
+        $user = new User();
+
+        $user->username = $request['username'];
+        $user->active_flg = 0;
+        $user->password = Hash::make($request['password']);
 
         $user->save();
     }
@@ -128,11 +143,12 @@ class User extends Authenticatable
         return $user->delete();
     }
 
-    public function confirmUser($id, $confirm)
+    public function confirmUser($id)
     {
         $confirmUser = User::findOrFail($id);
 
         $confirmUser->active_flg = 1;
 
+        $confirmUser->save();
     }
 }

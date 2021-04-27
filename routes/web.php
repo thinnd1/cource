@@ -19,6 +19,7 @@ Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
     Route::post('/updateuser/{id}','AdminControgetcourceller@updateUser')->name('updateUser');
     Route::get('/deleteuser/{id}','AdminController@deleteUser')->name('deleteUser');
     Route::get('/getconfirm','AdminController@getConfirm')->name('getConfirm');
+    Route::get('/acceptregiter/{id}','AdminController@acceptRegiter')->name('acceptRegiter');
 
     Route::get('/getcreatecource','AdminController@getCreateCource')->name('getCreateCource');
     Route::post('/createcource','AdminController@createCource')->name('createCource');

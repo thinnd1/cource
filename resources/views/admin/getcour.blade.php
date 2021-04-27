@@ -25,9 +25,9 @@
                         <div class="row">
                             <form action="">
                                 <div class="col-lg-6">
-                                    <input type="text" name="search_account" class="form-control"
+                                    <input type="text" name="search_cour" class="form-control"
                                            placeholder="Search ..."
-                                           value="{{ request()->input('search_account', old('search_account')) }}"
+                                           value="{{ request()->input('search_cour', old('search_cour')) }}"
                                            id="inputname">
                                 </div>
                                 <div class="col-lg-6">
@@ -52,7 +52,7 @@
                             <tbody>
                             @if(count($cources) == 0)
                                 <tr class="borderless">
-                                    <td colspan="11" class="text-center">Không có dữ liệu</td>
+                                    <td colspan="11" class="text-center">Not Data</td>
                                 </tr>
                             @else
                                 @foreach ($cources as $index => $cource)

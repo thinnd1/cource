@@ -12,10 +12,16 @@ class Cours extends Model
         'code_cour'
     ];
 
-    public function getCource()
+    public function getCource($search = null)
     {
-        return Cours::orderBy('created_at', 'DESC')
+        $cource =  Cours::orderBy('created_at', 'DESC')
             ->get();
+        if ($search) {
+            $cource = Cours::orderBy('created_at', 'DESC')
+                ->where()
+                ->get();
+        }
+        return $cource;
     }
 
     public function getDetail($id)

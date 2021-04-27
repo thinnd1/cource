@@ -92,9 +92,8 @@ class AdminController extends Controller
 // xac nhan dang ky thanh cong hay ko
     public function acceptRegiter(Request $request, $id)
     {
-        $active_flg = $request->active_flg;
-        $this->user->confirmUser($id, $active_flg);
-        return redirect('getconfirm');
+        $this->user->confirmUser($id);
+        return redirect()->route('getConfirm');
     }
 
 // manage cource
@@ -176,32 +175,38 @@ class AdminController extends Controller
 // manage planning
     public function getPlanning()
     {
-
+        $planning = $this->planning->getPlanning();
+        return view('admin/planning', ['planning' => $planning]);
     }
 
     public function getCreatePlanning()
     {
-
+        return view('admin/createplanning');
     }
 
     public function createPlanning(Request $request)
     {
-
+        $planning = $request->all();
+        $this->planning->createPlanning($planning);
+        return redirect()->route('getPlanning');
     }
 
-    public function getUpdatePlanning()
+    public function getUpdatePlanning($id)
     {
-
+        $planning = $this->planning->getDetail($id);
+        return view('admin/updateplanning', ['planning' => $planning]);
     }
 
-    public function updatePlaning(Request $request)
+    public function updatePlaning(Request $request, $id)
     {
-
+        $planning = $request->all();
+        $this->planning->updatePlaning($planning, $id);
+        return redirect()->route('getPlanning');
     }
 
     public function deletePlaning($id)
     {
         $this->planning->deletePlanning($id);
-//        return redirect()->route('getListUser')->with('key', 'Đã xóa thành viên');
+        return redirect()->route('getPlanning');
     }
 }

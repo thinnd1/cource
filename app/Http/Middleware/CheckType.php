@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckType
 {
-    const STUDENT = 1;
-    const TEACHER = 2;
-    const ADMIN = 3;
+    const STUDENT = 'etudiant';
+    const TEACHER = 'enseignant';
+    const ADMIN = 'admin';
 
     /**
      * Handle an incoming request.
@@ -35,7 +35,8 @@ class CheckType
     protected function admin($request, $next) {
         $user = Auth::user();
         // Neu ko dung role thi chuyen ve` login
-        if ($user->user_type != self::ADMIN) {
+        if ($user->type != self::ADMIN) {
+            dd("23");
             return redirect()->route('login');
         }
         return $next($request);
@@ -44,7 +45,7 @@ class CheckType
     protected function student($request, $next) {
         $user = Auth::user();
         // Neu ko dung role thi chuyen ve` login
-        if ($user->user_type != self::STUDENT) {
+        if ($user->type != self::STUDENT) {
             return redirect()->route('login');
         }
 
@@ -54,7 +55,7 @@ class CheckType
     protected function teacher($request, $next) {
         $user = Auth::user();
         // Neu ko dung role thi chuyen ve` login
-        if ($user->user_type != self::TEACHER) {
+        if ($user->type != self::TEACHER) {
             return redirect()->route('login');
         }
         return $next($request);

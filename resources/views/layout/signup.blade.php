@@ -33,24 +33,6 @@
             @enderror
         </div>
 
-        <div class="form-group">
-            <label for="inputFullName">Họ Và Tên</label>
-            <input type="text" name="full_name" class="form-control full-name" value="{{ old("full_name") }}" id="inputFullName"
-                   placeholder="Nhập họ và tên">
-            @error('full_name')
-            <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div class="form-group">
-            <label for="inputEmail">Email</label>
-            <input type="email" name="email" class="form-control email" value="{{ old("email") }}" id="inputEmail"
-                   placeholder="Nhập email">
-            @error('email')
-            <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
-
         <p>Đã có tài khoản, <a href="{{ route('login') }}">Đăng nhập</a></p>
         <button type="submit" class="btn btn-primary">Đăng ký</button>
     </form>

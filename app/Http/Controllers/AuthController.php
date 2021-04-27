@@ -15,34 +15,37 @@ class AuthController extends Controller
     {
         $this->user = $user;
     }
+
     public function getSignup()
     {
         return view('layout.signup');
     }
+
     public function signup(Request $request)
     {
         $user = $request->all();
-        $this->user->createUser($user);
+        $this->user->register($user);
 
         return redirect()->route('login');
     }
+
     public function getLogin()
     {
         return view('layout.login');
     }
     public function login(LoginRequest $request)
     {
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'active_flg' => 1 ])) {
             // login thành công
             // check xem user này thuộc cái nào. và chuyển hướng tới cái đó.
 
-            if (Auth::user()->user_type == User::ADMIN) {
+            if (Auth::user()->type == User::ADMIN) {
                 return redirect()->route('getListUser')->with('key', 'Login Successful');
             }
-            elseif (Auth::user()->user_type == User::TEACHER) {
+            elseif (Auth::user()->type == User::TEACHER) {
                 return redirect()->route('getInformationLecture')->with('key', 'Login Successful');
             }
-            elseif (Auth::user()->user_type == User::STUDENT) {
+            elseif (Auth::user()->type == User::STUDENT) {
                 return redirect()->route('getInformationStudent')->with('key', 'Login Successful');
             }
         } else {

@@ -32,13 +32,12 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <button type="submit" class="btn btn-primary">Search</button>
-                                    <a href="{{ route('getCreateFormation') }}" class="btn btn-primary">Add
-                                        Formation</a>
+                                    <a href="{{ route('getCreateFormation') }}" class="btn btn-primary">Add Formation</a>
                                 </div>
                             </form>
                         </div>
 
-                        <h3>Total User: {{ count($formations) }} </h3>
+                        <h3>Total Formation: {{ count($formations) }} </h3>
                         <table class="table table-bordered table-hover tablesorter">
                             <thead>
                             <tr>

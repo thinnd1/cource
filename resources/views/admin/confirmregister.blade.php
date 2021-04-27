@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="table-responsive">
-                            <h3>Tổng số tài khoản: {{ count($users) }} </h3>
+                            <h3>Total Account: {{ count($users) }} </h3>
                             <table class="table table-bordered table-hover tablesorter">
                                 <thead>
                                 <tr>
@@ -35,7 +35,7 @@
                                 <tbody>
                                 @if(count($users) == 0)
                                     <tr class="borderless">
-                                        <td colspan="11" class="text-center">Không có dữ liệu</td>
+                                        <td colspan="11" class="text-center">Not Data</td>
                                     </tr>
                                 @else
                                     @foreach ($users as $index => $user)
@@ -65,7 +65,7 @@
                                             </td>
                                             <td>
                                                 <div class="divide-column">
-                                                    <a class="btn btn-warning" name="active_flg">
+                                                    <a href="{{ route('acceptRegiter', ['id' => $user->id ]) }}" class="btn btn-warning" name="active_flg" >
                                                         Confirm
                                                     </a>
                                                 </div>

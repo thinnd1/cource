@@ -20,8 +20,7 @@
                         <div class="form-group row">
                             <label for="inputcour" class="col-sm-2 col-form-label">Cour*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="cours_id" class="form-control" value="{{ old("cours_id") }}"
-                                       id="cours_id">
+                                <input type="text" name="cours_id" class="form-control" value="{{ $planning->cours_id }}" id="cours_id">
                                 @error('cours_id')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -31,14 +30,14 @@
                         <div class="form-group row">
                             <label for="inputcour" class="col-sm-2 col-form-label">Date Debut*</label>
                             <div class="col-sm-10">
-                                <input type="datetime-local" class="form-control" id="date_debut" name="date_debut">
+                                <input type="datetime-local" class="form-control" value="{{ $planning->date_debut }}" name="date_debut">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="inputcour" class="col-sm-2 col-form-label">Date Fin*</label>
                             <div class="col-sm-10">
-                                <input type="datetime-local" class="form-control" id="date_fin" name="date_fin">
+                                <input type="datetime-local" class="form-control" value="{{ $planning->date_fin }}" name="date_fin">
                             </div>
                         </div>
 
