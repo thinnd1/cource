@@ -34,9 +34,7 @@ class CheckType
 
     protected function admin($request, $next) {
         $user = Auth::user();
-        // Neu ko dung role thi chuyen ve` login
         if ($user->type != self::ADMIN) {
-            dd("23");
             return redirect()->route('login');
         }
         return $next($request);
@@ -44,7 +42,6 @@ class CheckType
 
     protected function student($request, $next) {
         $user = Auth::user();
-        // Neu ko dung role thi chuyen ve` login
         if ($user->type != self::STUDENT) {
             return redirect()->route('login');
         }
@@ -54,7 +51,6 @@ class CheckType
 
     protected function teacher($request, $next) {
         $user = Auth::user();
-        // Neu ko dung role thi chuyen ve` login
         if ($user->type != self::TEACHER) {
             return redirect()->route('login');
         }

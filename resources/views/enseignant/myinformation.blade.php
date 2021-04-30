@@ -29,24 +29,16 @@
                     <div class="form-group row">
                         <label for="inputUser" class="col-sm-2 col-form-label">Nom</label>
                         <div class="col-sm-10">
-                            {{ $user->first_name }}
+                            {{ $user->nom }}
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Prenom</label>
                         <div class="col-sm-10">
-                            {{ $user->last_name }}
+                            {{ $user->prenom }}
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label for="inputUser" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            {{ $user->email }}
-                        </div>
-                    </div>
-
 
                     <div class="form-group row">
                         <label for="inputUser" class="col-sm-2 col-form-label">Created date</label>

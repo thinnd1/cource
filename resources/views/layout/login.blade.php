@@ -6,12 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <title>Đăng Nhập</title>
+    <title>Login</title>
 </head>
 <body>
 <div class="container">
-    <h2>Đăng nhập</h2>
-    <form class="form-signin" action="{{ route('login') }}" method="post">
+    <h2>Login</h2>
+    <form class="form-signin" action="{{ route('postLogin') }}" method="post">
         @csrf
 
         @if (session('error'))
@@ -21,17 +21,14 @@
         @endif
 
         <div class="form-group">
-            <label for="inputUsername">Tên Đăng Nhập</label>
-            <input type="text" name="username" class="form-control username" value="{{ old("username") }}" id="inputUsername" aria-describedby="emailHelp" placeholder="Nhập tên">
-            @error('username')
-            <p class="text-danger">{{ $message }}</p>
-            @enderror
+            <label for="inputUsername">Login</label>
+            <input type="text" name="login" class="form-control username" value="{{ old("login") }}" aria-describedby="emailHelp" placeholder="Login type">
         </div>
 
         <div class="form-group">
-            <label for="inputPassword">Mật Khẩu</label>
-            <input type="password" name="password" class="form-control password" id="inputPassword" placeholder="Nhập mật khẩu">
-            @error('password')
+            <label for="inputPassword">Password</label>
+            <input type="password" name="mdp" class="form-control password" placeholder="Password type">
+            @error('mdp')
             <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>

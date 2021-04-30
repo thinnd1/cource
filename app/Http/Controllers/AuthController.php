@@ -35,9 +35,7 @@ class AuthController extends Controller
     }
     public function login(LoginRequest $request)
     {
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'active_flg' => 1 ])) {
-            // login thành công
-            // check xem user này thuộc cái nào. và chuyển hướng tới cái đó.
+        if (Auth::attempt(['login' => $request->login, 'password' => $request->mdp, 'active_flg' => 1 ])) {
 
             if (Auth::user()->type == User::ADMIN) {
                 return redirect()->route('getListUser')->with('key', 'Login Successful');
@@ -49,7 +47,7 @@ class AuthController extends Controller
                 return redirect()->route('getInformationStudent')->with('key', 'Login Successful');
             }
         } else {
-            return redirect()->route('login')->with('error', 'Wrong user or password');
+            return redirect()->route('login')->with('error', 'Wrong password');
         }
     }
 

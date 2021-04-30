@@ -41,28 +41,23 @@
                                     @foreach ($users as $index => $user)
 
                                         <tr>
-                                            <td>{{ $index }}</td>
+                                            <td>{{ $index + 1 }}</td>
                                             <td>
                                                 <div class="divide-column">
-                                                    {{ $user->username }}
+                                                    {{ $user->login }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="divide-column">
-                                                    {{ $user->first_name }}
+                                                    {{ $user->prenom }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="divide-column">
-                                                    {{ $user->last_name }}
+                                                    {{ $user->nom }}
                                                 </div>
                                             </td>
 
-                                            <td>
-                                                <div class="divide-column">
-                                                    {{ $user->email }}
-                                                </div>
-                                            </td>
                                             <td>
                                                 <div class="divide-column">
                                                     <a href="{{ route('acceptRegiter', ['id' => $user->id ]) }}" class="btn btn-warning" name="active_flg" >

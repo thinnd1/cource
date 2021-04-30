@@ -62,22 +62,17 @@
                                         <td>{{ $index }}</td>
                                         <td>
                                             <div class="divide-column">
-                                                {{ $user->username }}
+                                                {{ $user->login }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="divide-column">
-                                                {{ $user->first_name }}
+                                                {{ $user->nom }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="divide-column">
-                                                {{ $user->last_name }}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="divide-column">
-                                                {{ $user->email }}
+                                                {{ $user->prenom }}
                                             </div>
                                         </td>
                                         <td>

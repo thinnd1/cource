@@ -24,18 +24,18 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username'   => 'required',
-            'password'   => 'required|min:5|max:255',
+            'login'   => 'required',
+//            'mdp'   => 'required|min:5|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Không được để trống',
-            'password.required' => 'Không được để trống',
-            'password.min' => 'Độ dài lớn hơn 5 ký tự',
-            'password.max' => 'Độ dài nhỏ hơn 255 ký tự',
+            'login.required' => 'Không được để trống',
+//            'mdp.required' => 'Không được để trống',
+//            'mdp.min' => 'Độ dài lớn hơn 5 ký tự',
+//            'mdp.max' => 'Độ dài nhỏ hơn 255 ký tự',
         ];
     }
 }

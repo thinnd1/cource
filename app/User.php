@@ -22,26 +22,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'first_name', 'last_name', 'birthday', 'email', 'active_flg'
+        'login', 'prenom', 'nom', 'active_flg', 'formation_id', 'mdp'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function username()
+    {
+        return 'login';
+    }
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getAuthPassword() {
+        return $this->mdp;
+    }
 
     public function getUserConfirm()
     {
@@ -50,7 +41,7 @@ class User extends Authenticatable
     }
     public function getTeacher()
     {
-
+        return User::where('type', self::TEACHER)->get();
     }
 
     public function getAllUser($id, $search = null)
@@ -62,7 +53,7 @@ class User extends Authenticatable
         if ($search) {
             $listuser = User::where('active_flg', self::USER_ACTIVE)
                 ->where('id', '<>', $id)
-                ->where('username', 'like', '%' . $search . '%')
+                ->where('login', 'like', '%' . $search . '%')
                 ->orderBy('created_at', 'DESC')
                 ->get();
         }
@@ -78,13 +69,12 @@ class User extends Authenticatable
     {
         $user = new User();
 
-        $user->username = $request['username'];
-        $user->first_name = $request['first_name'];
-        $user->last_name = $request['last_name'];
-        $user->user_type = $request['user_type'];
+        $user->login = $request['username'];
+        $user->prenom = $request['first_name'];
+        $user->nom = $request['last_name'];
+        $user->type = $request['user_type'];
         $user->active_flg = 1;
-        $user->password = Hash::make($request['password']);
-        $user->email = $request['email'];
+        $user->mdp = Hash::make($request['mdp']);
 
         $user->save();
     }
@@ -93,9 +83,10 @@ class User extends Authenticatable
     {
         $user = new User();
 
-        $user->username = $request['username'];
+        $user->login = $request['username'];
         $user->active_flg = 0;
-        $user->password = Hash::make($request['password']);
+        $user->type = $request['user_type'];
+        $user->mdp = bcrypt($request['mdp']);
 
         $user->save();
     }

@@ -25,8 +25,16 @@
         </div>
 
         <div class="form-group">
+            <label for="inputRole">Role</label>
+            <select name="user_type" class="form-control">
+                <option value="etudiant">Etudiant</option>
+                <option value="enseignant">Enseignant</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="inputPassword">Mật Khẩu*</label>
-            <input type="password" name="password" class="form-control password" value="{{ old("password") }}" id="inputPassword"
+            <input type="password" name="mdp" class="form-control password" value="{{ old("mdp") }}" id="inputPassword"
                    placeholder="Nhập mật khẩu">
             @error('password')
             <p class="text-danger">{{ $message }}</p>

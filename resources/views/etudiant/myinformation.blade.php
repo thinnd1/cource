@@ -22,31 +22,23 @@
                     <div class="form-group row">
                         <label for="inputUser" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                            {{ $information->username }}
+                            {{ $information->login }}
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="inputUser" class="col-sm-2 col-form-label">Nom</label>
                         <div class="col-sm-10">
-                            {{ $information->first_name }}
+                            {{ $information->nom }}
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Prenom</label>
                         <div class="col-sm-10">
-                            {{ $information->last_name }}
+                            {{ $information->prenom }}
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label for="inputUser" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            {{ $information->email }}
-                        </div>
-                    </div>
-
 
                     <div class="form-group row">
                         <label for="inputUser" class="col-sm-2 col-form-label">Created date</label>
@@ -55,7 +47,7 @@
                         </div>
                     </div>
 
-                    <a class="btn btn-warning" href="{{ route('getUpdateInformationStudent') }}">Sửa</a>
+                    <a class="btn btn-warning" href="{{ route('getUpdateInformationStudent') }}">Edit</a>
                 </div>
             </div>
         </div>
