@@ -48,4 +48,13 @@ class LectureController extends Controller
         $cources = $this->cours->getCourByTeacher($idEnseignant);
         return view('enseignant/getcour', ['cources'  => $cources]);
     }
+
+    public function getSchedule(Request $request)
+    {
+        $idEnseignant = Auth::user()->id;
+        $cours = $this->cours->getCourByTeacher($idEnseignant);
+        $search = $request->input('cours_id');
+        $schedules = $this->cours->getSchedule($idEnseignant, $search);
+        return view('enseignant/schedule', ['schedules'  => $schedules, 'cours' => $cours]);
+    }
 }

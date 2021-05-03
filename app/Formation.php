@@ -28,7 +28,7 @@ class Formation extends Model
             ->first();
     }
 
-    public function getFormation($search = null)
+    public function getFormation($id, $search = null)
     {
         $formation = Formation::orderBy('created_at', 'DESC')
             ->get();

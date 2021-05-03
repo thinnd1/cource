@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Formation;
 use App\Http\Requests\LoginRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -10,15 +11,18 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     protected $user;
+    protected $formation;
 
-    public function __construct(User $user)
+    public function __construct(User $user, Formation $formation)
     {
         $this->user = $user;
+        $this->formation = $formation;
     }
 
     public function getSignup()
     {
-        return view('layout.signup');
+        $formation = $this->formation->getFormation();
+        return view('layout.signup', ['formation' => $formation]);
     }
 
     public function signup(Request $request)

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Cours extends Model
@@ -77,5 +78,35 @@ class Cours extends Model
     public function getCourByTeacher($id)
     {
         return Cours::where('user_id', $id)->get();
+    }
+
+    public function getCourByStudent($formation_id, $search = null)
+    {
+        $cours = Cours::where('formation_id', $formation_id)->get();
+
+        if ($search) {
+            $cours = Cours::where('formation_id', $formation_id)
+                ->where('cours.id', $search)
+                ->get();
+        }
+
+        return $cours;
+    }
+
+    public function getSchedule($id, $search = null)
+    {
+        $getSchedule =  DB::table('cours')
+            ->where('user_id', $id)
+            ->leftJoin('plannings', 'cours.id', '=', 'plannings.cours_id')
+            ->get();
+        if ($search) {
+            $getSchedule =  DB::table('cours')
+                ->where('user_id', $id)
+                ->where('cours.id', $search)
+                ->leftJoin('plannings', 'cours.id', '=', 'plannings.cours_id')
+                ->get();
+        }
+
+        return $getSchedule;
     }
 }

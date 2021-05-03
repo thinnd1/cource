@@ -25,14 +25,6 @@
         </div>
 
         <div class="form-group">
-            <label for="inputRole">Role</label>
-            <select name="user_type" class="form-control">
-                <option value="etudiant">Etudiant</option>
-                <option value="enseignant">Enseignant</option>
-            </select>
-        </div>
-
-        <div class="form-group">
             <label for="inputPassword">Mật Khẩu*</label>
             <input type="password" name="mdp" class="form-control password" value="{{ old("mdp") }}" id="inputPassword"
                    placeholder="Nhập mật khẩu">
@@ -41,7 +33,24 @@
             @enderror
         </div>
 
-        <p>Đã có tài khoản, <a href="{{ route('login') }}">Đăng nhập</a></p>
+        <div class="form-group">
+            <label for="inputFormation">Formation</label>
+            <select name="formation_id" class="form-control">
+                @foreach($formation as $format)
+                    <option value="{{ $format->id }}">{{ $format->intitule }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="inputRole">Role</label>
+            <select name="user_type" class="form-control">
+                <option value="etudiant">Etudiant</option>
+                <option value="enseignant">Enseignant</option>
+            </select>
+        </div>
+
+        <p>Đã có tài khoản, <a href="{{ route('login') }}"> Login </a></p>
         <button type="submit" class="btn btn-primary">Đăng ký</button>
     </form>
 </div>

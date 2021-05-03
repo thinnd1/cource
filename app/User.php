@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -56,13 +55,11 @@ class User extends Authenticatable
 
     public function getAllUser($id, $search = null)
     {
-        $listuser = User::where('active_flg', self::USER_ACTIVE)
-            ->where('id', '<>', $id)
+        $listuser = User::where('id', '<>', $id)
             ->orderBy('created_at', 'DESC')
             ->get();
         if ($search) {
-            $listuser = User::where('active_flg', self::USER_ACTIVE)
-                ->where('id', '<>', $id)
+            $listuser = User::where('id', '<>', $id)
                 ->where('login', 'like', '%' . $search . '%')
                 ->orderBy('created_at', 'DESC')
                 ->get();
@@ -97,6 +94,7 @@ class User extends Authenticatable
         $user->login = $request['username'];
         $user->active_flg = 0;
         $user->type = $request['user_type'];
+        $user->formation_id = $request['formation_id'];
         $user->mdp = Hash::make($request['mdp']);
 
         $user->save();

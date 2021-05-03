@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cours;
 use Illuminate\Http\Request;
 use App\User;
 use App\Formation;
@@ -11,15 +12,18 @@ class StudentController extends Controller
 {
     protected $user;
     protected $formation;
+    protected $cours;
 
     public function __construct
     (
         User $user,
-        Formation $formation
+        Formation $formation,
+        Cours $cours
     )
     {
         $this->user = $user;
         $this->formation = $formation;
+        $this->cours = $cours;
     }
 
     public function getInformation()
@@ -43,9 +47,31 @@ class StudentController extends Controller
         return redirect()->route('getInformationStudent')->with('key', 'Update Successful');
     }
 
-    public function getFormation()
+    public function getFormation(Request $request)
     {
-        $formations = $this->formation->getFormation();
-        return view('etudiant/formation', ['formations' => $formations]);
+        $formation_id = Auth::user()->formation_id;
+        $search = $request->input('cours_id');
+        $cours = $this->cours->getCourByStudent($formation_id, $search);
+
+        return view('etudiant/formation', ['cours' => $cours]);
+    }
+
+
+    public function getListCource()
+    {
+
+    }
+
+    public function getCreateCource()
+    {
+
+    }
+
+    public function createCource(Request $request)
+    {
+        $data = $request->all();
+        $user_id = Auth::user()->id;
+
+        return redirect('')->route('');
     }
 }

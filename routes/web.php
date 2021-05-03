@@ -46,20 +46,23 @@ Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
 });
 // student
 
-Route::middleware(['checktype:student'])->prefix('student')->group(function(){
+Route::middleware(['checktype:student'])->prefix('etudiant')->group(function(){
     Route::get('/information','StudentController@getInformation')->name('getInformationStudent');
     Route::get('/editinformation','StudentController@getUpdateInformation')->name('getUpdateInformationStudent');
     Route::post('/updateuser','StudentController@updateInformation')->name('updateInformationStudent');
     Route::get('/getformation','StudentController@getFormation')->name('getFormation');
 
+
 });
 
 
 //lecture
-Route::middleware(['checktype:teacher'])->prefix('lecture')->group(function(){
+Route::middleware(['checktype:teacher'])->prefix('enseignant')->group(function(){
     Route::get('/information','LectureController@getInformation')->name('getInformationLecture');
     Route::get('/editinformation','LectureController@getUpdateInformation')->name('getUpdateInformationLecture');
     Route::post('/updateuser','LectureController@updateInformation')->name('updateUserLecture');
     Route::get('/getcour','LectureController@getCourByTeacher')->name('getCourByTeacher');
+    Route::get('/getcour','LectureController@getCourByTeacher')->name('getCourByTeacher');
+    Route::get('/getschedule','LectureController@getSchedule')->name('getSchedule');
 
 });
