@@ -62,13 +62,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputemail" class="col-sm-2 col-form-label">Email*</label>
+                            <label for="inputformation" class="col-sm-2 col-form-label">Formation*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="email" class="form-control" value="{{ old("email") }}"
-                                       id="inputemail">
-                                @error('email')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <select name="formation_id" class="form-control">
+                                    @foreach($formation as $format)
+                                        <option value="{{ $format->id }}">{{ $format->intitule }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -82,7 +82,6 @@
                                 </select>
                             </div>
                         </div>
-                        admin/createuser
                         <a class="btn btn-primary" href="{{ URL::previous() }}">Back</a>
                         <button type="submit" class="btn btn-warning">Submit</button>
                     </form>

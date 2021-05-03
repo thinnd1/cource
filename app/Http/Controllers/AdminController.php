@@ -33,14 +33,16 @@ class AdminController extends Controller
     public function getListUser(Request $request)
     {
         $id = Auth::user()->id;
+        $formation = $this->formation->getFormation();
         $search = trim($request->input('search_account'));
         $users = $this->user->getAllUser($id, $search);
-        return view('admin.home', compact('users'));
+        return view('admin.home', compact('users', 'formation'));
     }
 
     public function getCreateUser()
     {
-        return view("admin/createuser");
+        $formation = $this->formation->getFormation();
+        return view("admin/createuser", ['formation' => $formation]);
     }
 
     public function createUser(Request $request)
@@ -53,8 +55,9 @@ class AdminController extends Controller
 
     public function getUpdateUser($id)
     {
+        $formation = $this->formation->getFormation();
         $editinfor = $this->user->getDetail($id);
-        return view('admin/updateuser', ['editinfor' => $editinfor]);
+        return view('admin/updateuser', ['editinfor' => $editinfor], ['formation' => $formation]);
     }
 
     public function updateUser(Request $request, $id)
@@ -75,6 +78,15 @@ class AdminController extends Controller
     {
         $editinfor = $this->user->getDetail(Auth::user()->id);
         return view('admin/editformation', ['editinfor' => $editinfor]);
+    }
+
+    public function updateInformation(Request $request)
+    {
+        $updateInformation = $request->all();
+        $id = Auth::user()->id;
+        $this->user->updateInformation($updateInformation, $id);
+
+        return redirect()->route('getInformation')->with('key', 'Update Successful');
     }
 
     public function deleteUser($id)
@@ -99,7 +111,9 @@ class AdminController extends Controller
 // manage cource
     public function getCreateCource()
     {
-        return view('admin/createcour');
+        $teacher = $this->user->getTeacher();
+        $formation = $this->formation->getFormation();
+        return view('admin/createcour', ['teacher' => $teacher, 'formation' => $formation]);
     }
 
     public function createCource(Request $request)
@@ -117,8 +131,10 @@ class AdminController extends Controller
 
     public function getUpdateCource($id)
     {
+        $teacher = $this->user->getTeacher();
+        $formation = $this->formation->getFormation();
         $cources = $this->cource->getDetail($id);
-        return view('admin/updatecour', ['cources' => $cources]);
+        return view('admin/updatecour', ['cources' => $cources, 'teacher' => $teacher, 'formation' => $formation]);
     }
 
     public function updateCource(Request $request, $id)
@@ -181,7 +197,8 @@ class AdminController extends Controller
 
     public function getCreatePlanning()
     {
-        return view('admin/createplanning');
+        $cours = $this->cource->getCource();
+        return view('admin/createplanning', ['cours' => $cours]);
     }
 
     public function createPlanning(Request $request)
@@ -194,7 +211,8 @@ class AdminController extends Controller
     public function getUpdatePlanning($id)
     {
         $planning = $this->planning->getDetail($id);
-        return view('admin/updateplanning', ['planning' => $planning]);
+        $cours = $this->cource->getCource();
+        return view('admin/updateplanning', ['planning' => $planning, 'cours' => $cours]);
     }
 
     public function updatePlaning(Request $request, $id)

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -25,7 +26,7 @@ class UserSeeder extends Seeder
             'prenom' => 'Nguyen',
             'nom' => 'Thin',
             'active_flg' => 1,
-            'mdp' => bcrypt('12345678'),
+            'mdp' => Hash::make('12345678'),
             'type' => 'enseignant', // lecture
         ]);
 
@@ -35,16 +36,16 @@ class UserSeeder extends Seeder
             'prenom' => 'Nguyen',
             'nom' => 'Thin',
             'active_flg' => 1,
-            'mdp' => bcrypt('12345678'),
+            'mdp' => Hash::make('12345678'),
             'type' => 'enseignant', // lecture
         ]);
 
-       DB::table('users')->insert([
+        DB::table('users')->insert([
             'login' => 'student',
             'prenom' => 'Nguyen',
             'nom' => 'Thin',
             'active_flg' => 1,
-            'mdp' => bcrypt('12345678'),
+            'mdp' => Hash::make('12345678'),
             'type' => 'etudiant', //student
         ]);
     }

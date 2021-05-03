@@ -31,7 +31,7 @@
                         <div class="form-group row">
                             <label for="inputpass" class="col-sm-2 col-form-label">Password*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="password" class="form-control" value="{{ $editinfor->password }}"
+                                <input type="text" name="password" class="form-control" value="{{ $editinfor->pwd }}"
                                        id="inputpass">
                                 @error('password')
                                 <p class="text-danger">{{ $message }}</p>

@@ -18,13 +18,13 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="inputcour" class="col-sm-2 col-form-label">Cour*</label>
+                            <label for="inputformation" class="col-sm-2 col-form-label">Cours*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="cours_id" class="form-control" value="{{ old("cours_id") }}"
-                                       id="cours_id">
-                                @error('cours_id')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <select name="cours_id" class="form-control">
+                                    @foreach($cours as $cour)
+                                        <option value="{{ $cour->id }}">{{ $cour->intitule }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

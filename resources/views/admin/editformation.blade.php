@@ -1,5 +1,5 @@
 @extends('layout.index')
-@section('title', 'Update User')
+@section('title', 'Update information')
 @section('content')
 
     <div id="wrapper">
@@ -14,15 +14,49 @@
 
             <div class="row">
                 <div class="col-lg-9">
-                    <form action="{{ route('updateFormation', ['id' => $formation->id]) }}" method="post">
+                    <form action="{{ route('updateInformation', ['id' => $editinfor->id]) }}" method="post">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="inputintitule" class="col-sm-2 col-form-label">Intitule*</label>
+                            <label for="inputusername" class="col-sm-2 col-form-label">User name*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="intitule" class="form-control" value="{{ $formation->intitule }}"
-                                       id="inputintitule">
-                                @error('intitule')
+                                <input type="text" name="username" class="form-control" value="{{ $editinfor->login }}"
+                                       id="inputusername">
+                                @error('username')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputpass" class="col-sm-2 col-form-label">Password*</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="password" class="form-control" value="{{ $editinfor->mdp }}"
+                                       id="inputpass">
+                                @error('password')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputusername" class="col-sm-2 col-form-label">Nom*</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="first_name" class="form-control"
+                                       value="{{ $editinfor->nom }}"
+                                       id="inputfirstname">
+                                @error('first_name')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputusername" class="col-sm-2 col-form-label">Prenom*</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="last_name" class="form-control" value="{{ $editinfor->prenom }}"
+                                       id="inputlastname">
+                                @error('last_name')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>

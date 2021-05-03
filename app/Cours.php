@@ -6,11 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cours extends Model
 {
-    protected $table = 'course';
+    protected $table = 'cours';
     protected $fillable = [
-        'title',
-        'code_cour'
+        'intitule',
+        'user_id',
+        'formation_id'
     ];
+
+    public function planning()
+    {
+        return $this->hasMany(Planning::class, 'cour_id');
+    }
+
+    public function formation()
+    {
+        return $this->belongsTo(Formation::class, 'formation_id');
+    }
+
+    public function Users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     public function getCource($search = null)
     {
@@ -34,9 +50,9 @@ class Cours extends Model
     {
         $cour = new Cours();
 
-        $cour->title = $request['title'];
-        $cour->code_cour = $request['code_cour'];
-        $cour->address = $request['address'];
+        $cour->intitule = $request['intitule'];
+        $cour->user_id = $request['user_id'];
+        $cour->formation_id = $request['formation_id'];
 
         $cour->save();
     }
@@ -45,9 +61,9 @@ class Cours extends Model
     {
         $cour = Cours::findOrFail($id);
 
-        $cour->title = $request['title'];
-        $cour->code_cour = $request['code_cour'];
-        $cour->address = $request['address'];
+        $cour->intitule = $request['intitule'];
+        $cour->user_id = $request['user_id'];
+        $cour->formation_id = $request['formation_id'];
 
         $cour->save();
     }
@@ -56,5 +72,10 @@ class Cours extends Model
     {
         $cours = Cours::findOrFail($id);
         return $cours->delete();
+    }
+
+    public function getCourByTeacher($id)
+    {
+        return Cours::where('user_id', $id)->get();
     }
 }

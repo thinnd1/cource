@@ -13,7 +13,7 @@ class CreateFormationTable extends Migration
      */
     public function up()
     {
-        Schema::create('formation', function (Blueprint $table) {
+        Schema::create('formations', function (Blueprint $table) {
             $table->id();
             $table->string('intitule')->nullable();
             $table->timestamps();

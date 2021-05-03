@@ -58,7 +58,7 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>
-                                            {{ $plan->cours_id }}
+                                            {{ isset($plan->cours->intitule) ? $plan->cours->intitule : '' }}
                                         </td>
                                         <td>
                                             {{ \Carbon\Carbon::parse($plan->date_debut)->format('d-m-Y h:i:s') }}

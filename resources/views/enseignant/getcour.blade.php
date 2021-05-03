@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('enseignant.index')
 @section('title', 'List Cour')
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @section('content')

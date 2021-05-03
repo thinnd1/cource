@@ -22,7 +22,7 @@
                     <div class="form-group row">
                         <label for="inputUser" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                            {{ $user->username }}
+                            {{ $user->login }}
                         </div>
                     </div>
 

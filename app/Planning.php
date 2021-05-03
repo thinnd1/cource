@@ -12,7 +12,12 @@ class Planning extends Model
         'date_fin',
         'cour_id'
     ];
-    protected $table = 'planning';
+    protected $table = 'plannings';
+
+    public function cours()
+    {
+        return $this->belongsTo('App\Cours');
+    }
 
     public function getPlanning($search = null)
     {
@@ -40,7 +45,7 @@ class Planning extends Model
 
         $planning->date_debut = $request['date_debut'];
         $planning->date_fin = $request['date_fin'];
-        $planning->cour_id = $request['cour_id'];
+        $planning->cours_id = $request['cours_id'];
 
         $planning->save();
     }

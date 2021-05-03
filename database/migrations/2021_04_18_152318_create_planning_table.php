@@ -13,7 +13,7 @@ class CreatePlanningTable extends Migration
      */
     public function up()
     {
-        Schema::create('planning', function (Blueprint $table) {
+        Schema::create('plannings', function (Blueprint $table) {
             $table->id();
             $table->integer('cours_id')->nullable();
             $table->date('date_debut')->nullable();

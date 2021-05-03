@@ -45,7 +45,7 @@
                                 <th>Username</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
-                                <th>Email</th>
+                                <th>Formation</th>
                                 <th>Role</th>
                                 <th>Created date</th>
                                 <th width="10%"></th>
@@ -59,7 +59,7 @@
                             @else
                                 @foreach ($users as $index => $user)
                                     <tr>
-                                        <td>{{ $index }}</td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>
                                             <div class="divide-column">
                                                 {{ $user->login }}
@@ -77,9 +77,14 @@
                                         </td>
                                         <td>
                                             <div class="divide-column">
-                                                @if($user->user_type == 1)
+                                                {{ isset($user->formation->intitule) ? $user->formation->intitule : '' }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="divide-column">
+                                                @if($user->type == 1)
                                                     Etudiant
-                                                @elseif ($user->user_type == 2)
+                                                @elseif ($user->type == 2)
                                                     Enseignant
                                                 @else
                                                     Admin

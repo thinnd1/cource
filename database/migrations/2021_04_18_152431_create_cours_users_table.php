@@ -14,8 +14,12 @@ class CreateCoursUsersTable extends Migration
     public function up()
     {
         Schema::create('cours_users', function (Blueprint $table) {
-            $table->integer('cours_id');
-            $table->integer('users_id');
+            $table->integer('cours_id')->index();
+//            $table->foreign('cours_id')->references('id')->on('cours')->onDelete('cascade');
+
+            $table->integer('users_id')->index();
+//            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

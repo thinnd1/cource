@@ -13,10 +13,11 @@ Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
     Route::get('/getuser','AdminController@getListUser')->name('getListUser');
     Route::get('/information','AdminController@getInformation')->name('getInformation');
     Route::get('/editinformation','AdminController@getUpdateInformation')->name('getUpdateInformation');
+    Route::post('/updateInformation','AdminController@updateInformation')->name('updateInformation');
     Route::get('/getcreateuser','AdminController@getCreateUser')->name('getCreateUser');
     Route::post('/createuser','AdminController@createUser')->name('createUser');
     Route::get('/getupdateuser/{id}','AdminController@getUpdateUser')->name('getUpdateUser');
-    Route::post('/updateuser/{id}','AdminControgetcourceller@updateUser')->name('updateUser');
+    Route::post('/updateuser/{id}','AdminController@updateUser')->name('updateUser');
     Route::get('/deleteuser/{id}','AdminController@deleteUser')->name('deleteUser');
     Route::get('/getconfirm','AdminController@getConfirm')->name('getConfirm');
     Route::get('/acceptregiter/{id}','AdminController@acceptRegiter')->name('acceptRegiter');
@@ -28,7 +29,7 @@ Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
     Route::post('/updatecource/{id}','AdminController@updateCource')->name('updateCource');
     Route::get('/deletecource/{id}','AdminController@deleteCource')->name('deleteCource');
 
-    Route::get('/getformation','AdminController@getFormation')->name('getFormation');
+    Route::get('/getformation','AdminController@getFormation')->name('getFormationAdmin');
     Route::get('/getcreateformation','AdminController@getCreateFormation')->name('getCreateFormation');
     Route::post('/createformation','AdminController@createFormation')->name('createFormation');
     Route::get('/getupdateformation/{id}','AdminController@getUpdateFormation')->name('getUpdateFormation');
@@ -49,6 +50,7 @@ Route::middleware(['checktype:student'])->prefix('student')->group(function(){
     Route::get('/information','StudentController@getInformation')->name('getInformationStudent');
     Route::get('/editinformation','StudentController@getUpdateInformation')->name('getUpdateInformationStudent');
     Route::post('/updateuser','StudentController@updateInformation')->name('updateInformationStudent');
+    Route::get('/getformation','StudentController@getFormation')->name('getFormation');
 
 });
 
@@ -58,5 +60,6 @@ Route::middleware(['checktype:teacher'])->prefix('lecture')->group(function(){
     Route::get('/information','LectureController@getInformation')->name('getInformationLecture');
     Route::get('/editinformation','LectureController@getUpdateInformation')->name('getUpdateInformationLecture');
     Route::post('/updateuser','LectureController@updateInformation')->name('updateUserLecture');
+    Route::get('/getcour','LectureController@getCourByTeacher')->name('getCourByTeacher');
 
 });

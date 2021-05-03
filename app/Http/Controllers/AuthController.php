@@ -35,7 +35,7 @@ class AuthController extends Controller
     }
     public function login(LoginRequest $request)
     {
-        if (Auth::attempt(['login' => $request->login, 'password' => $request->mdp, 'active_flg' => 1 ])) {
+        if (Auth::attempt(['login' => $request->login, 'password' => $request->mdp ])) {
 
             if (Auth::user()->type == User::ADMIN) {
                 return redirect()->route('getListUser')->with('key', 'Login Successful');
@@ -47,7 +47,7 @@ class AuthController extends Controller
                 return redirect()->route('getInformationStudent')->with('key', 'Login Successful');
             }
         } else {
-            return redirect()->route('login')->with('error', 'Wrong password');
+            return redirect()->route('login')->with('error', 'Wrong password or user');
         }
     }
 

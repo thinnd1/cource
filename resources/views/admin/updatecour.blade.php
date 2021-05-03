@@ -18,31 +18,35 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="inputusername" class="col-sm-2 col-form-label">Title*</label>
+                            <label for="inputusername" class="col-sm-2 col-form-label">Intitule*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="title" class="form-control" value="{{ $cources->title }}"
+                                <input type="text" name="intitule" class="form-control" value="{{ $cources->intitule }}"
                                        id="title">
-                                @error('title')
+                                @error('intitule')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputusername" class="col-sm-2 col-form-label">Code Cour*</label>
+                            <label for="inputformation" class="col-sm-2 col-form-label">Enseignant*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="code_cour" class="form-control"
-                                       value="{{ $cources->code_cour }}">
-                                @error('code_cour')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <select name="user_id" class="form-control">
+                                    @foreach($teacher as $teach)
+                                        <option value="{{ $teach->id }}">{{ $teach->nom . ' ' . $teach->prenom }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputaddress" class="col-sm-2 col-form-label">Address</label>
+                            <label for="inputformation" class="col-sm-2 col-form-label">Formation*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="address" class="form-control" value="{{ $cources->address }}">
+                                <select name="formation_id" class="form-control">
+                                    @foreach($formation as $format)
+                                        <option value="{{ $format->id }}">{{ $format->intitule }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

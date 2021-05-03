@@ -6,11 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Formation extends Model
 {
-    protected $table = 'formation';
+    protected $table = 'formations';
 
     protected $fillable = [
         'intitule'
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function cours()
+    {
+        return $this->hasMany(Cours::class, 'formation_id', 'id');
+    }
 
     public function getDetail($id)
     {
