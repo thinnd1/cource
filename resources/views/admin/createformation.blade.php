@@ -14,7 +14,7 @@
 
             <div class="row">
                 <div class="col-lg-9">
-                    <form action="{{ route('createFormation') }}" method="post">
+                    <form action="{{ route('createFormationAdmin') }}" method="post">
                         @csrf
 
                         <div class="form-group row">

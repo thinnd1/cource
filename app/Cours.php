@@ -24,9 +24,9 @@ class Cours extends Model
         return $this->belongsTo(Formation::class, 'formation_id');
     }
 
-    public function Users()
+    public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'cours_users');
     }
 
     public function getCource($search = null)

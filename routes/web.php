@@ -31,9 +31,9 @@ Route::middleware(['checktype:admin'])->prefix('admin')->group(function(){
 
     Route::get('/getformation','AdminController@getFormation')->name('getFormationAdmin');
     Route::get('/getcreateformation','AdminController@getCreateFormation')->name('getCreateFormation');
-    Route::post('/createformation','AdminController@createFormation')->name('createFormation');
+    Route::post('/createformation','AdminController@createFormation')->name('createFormationAdmin');
     Route::get('/getupdateformation/{id}','AdminController@getUpdateFormation')->name('getUpdateFormation');
-    Route::post('/updateformation/{id}','AdminController@createFormation')->name('updateFormation');
+    Route::post('/updateformation/{id}','AdminController@updateFormation')->name('updateFormation');
     Route::get('/deleteformation/{id}','AdminController@deleteFormation')->name('deleteFormation');
 
     Route::get('/getplanning','AdminController@getPlanning')->name('getPlanning');
@@ -51,7 +51,11 @@ Route::middleware(['checktype:student'])->prefix('etudiant')->group(function(){
     Route::get('/editinformation','StudentController@getUpdateInformation')->name('getUpdateInformationStudent');
     Route::post('/updateuser','StudentController@updateInformation')->name('updateInformationStudent');
     Route::get('/getformation','StudentController@getFormation')->name('getFormation');
-
+    Route::get('/getlistcource','StudentController@getListCource')->name('getListCource');
+    Route::get('/getcreatecource','StudentController@getCreateCource')->name('getCreateCourceEtudiant');
+    Route::get('/createcource/{id}','StudentController@createCource')->name('createCourceEtudiant');
+    Route::get('/cancelcource/{id}','StudentController@cancelCource')->name('cancelCource');
+    Route::get('/getschedule','StudentController@getSchedule')->name('getSchedule');
 
 });
 
@@ -62,7 +66,7 @@ Route::middleware(['checktype:teacher'])->prefix('enseignant')->group(function()
     Route::get('/editinformation','LectureController@getUpdateInformation')->name('getUpdateInformationLecture');
     Route::post('/updateuser','LectureController@updateInformation')->name('updateUserLecture');
     Route::get('/getcour','LectureController@getCourByTeacher')->name('getCourByTeacher');
-    Route::get('/getcour','LectureController@getCourByTeacher')->name('getCourByTeacher');
+//    Route::get('/getcour','LectureController@getCourByTeacher')->name('getCourByTeacher');
     Route::get('/getschedule','LectureController@getSchedule')->name('getSchedule');
 
 });

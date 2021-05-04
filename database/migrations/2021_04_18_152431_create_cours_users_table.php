@@ -17,7 +17,7 @@ class CreateCoursUsersTable extends Migration
             $table->integer('cours_id')->index();
 //            $table->foreign('cours_id')->references('id')->on('cours')->onDelete('cascade');
 
-            $table->integer('users_id')->index();
+            $table->integer('user_id')->index();
 //            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();

@@ -166,7 +166,7 @@ class AdminController extends Controller
     {
         $formation = $request->all();
         $this->formation->createFormation($formation);
-        return redirect()->route('getFormation');
+        return redirect()->route('getFormationAdmin');
     }
 
     public function getUpdateFormation($id)
@@ -179,13 +179,13 @@ class AdminController extends Controller
     {
         $formation = $request->all();
         $this->formation->updateFormation($id, $formation);
-        return redirect()->route('');
+        return redirect()->route('getFormationAdmin');
     }
 
     public function deleteFormation($id)
     {
-        $this->cource->deleteCource($id);
-        return redirect()->route('getListUser')->with('key', 'Delete Successful');
+        $this->formation->deleteFormation($id);
+        return redirect()->route('getFormationAdmin')->with('key', 'Delete Successful');
     }
 
 // manage planning

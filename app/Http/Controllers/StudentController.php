@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cours;
+use App\Planning;
 use Illuminate\Http\Request;
 use App\User;
 use App\Formation;
@@ -59,19 +60,49 @@ class StudentController extends Controller
 
     public function getListCource()
     {
-
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $cours = $user->cours()->get();
+//        dd($user1->pivot->cours_id);
+        return view('etudiant/listcour', ['cours' => $cours]);
     }
 
     public function getCreateCource()
     {
-
+        $formation_id = Auth::user()->formation_id;
+        $cours = $this->cours->getCourByStudent($formation_id);
+        return view('etudiant/createCour', ['cours' => $cours]);
     }
 
-    public function createCource(Request $request)
+    public function createCource($id)
     {
-        $data = $request->all();
-        $user_id = Auth::user()->id;
+        $idUser = Auth::user()->id;
+        $user = User::find($idUser);
+        $user->cours()->attach($id);
 
-        return redirect('')->route('');
+        return redirect()->route('getCreateCourceEtudiant');
+    }
+
+    public function cancelCource($id)
+    {
+        $idUser = Auth::user()->id;
+        $user = User::find($idUser);
+        $user->cours()->detach($id);
+
+        return redirect()->route('getListCource');
+    }
+
+    public function getSchedule()
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $cours = $user->cours()->get();
+        $time = array();
+
+        foreach ($cours as $cour) {
+            $time = Planning::where('cours_id', $cour->pivot->cours_id)->get(['date_debut', 'date_fin']);
+        }
+
+        return view('etudiant/schedule', ['cours' => $cours]);
     }
 }

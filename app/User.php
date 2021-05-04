@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'login', 'prenom', 'nom', 'active_flg', 'formation_id', 'mdp'
+        'login', 'prenom', 'nom', 'formation_id', 'mdp'
     ];
 
     public function username()
@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function cours()
     {
-        return $this->belongsToMany(Cours::class);
+        return $this->belongsToMany(Cours::class, 'cours_users');
     }
 
     public function getUserConfirm()
@@ -81,7 +81,6 @@ class User extends Authenticatable
         $user->nom = $request['last_name'];
         $user->type = $request['user_type'];
         $user->formation_id = $request['formation_id'];
-        $user->active_flg = 1;
         $user->mdp = Hash::make($request['password']);
 
         $user->save();
@@ -92,7 +91,6 @@ class User extends Authenticatable
         $user = new User();
 
         $user->login = $request['username'];
-        $user->active_flg = 0;
         $user->type = $request['user_type'];
         $user->formation_id = $request['formation_id'];
         $user->mdp = Hash::make($request['mdp']);
@@ -108,7 +106,6 @@ class User extends Authenticatable
         $updateUser->prenom = $request['first_name'];
         $updateUser->nom = $request['last_name'];
         $updateUser->type = $request['user_type'];
-        $updateUser->active_flg = true;
         $updateUser->mdp = Hash::make($request['password']);
 
         $updateUser->save();

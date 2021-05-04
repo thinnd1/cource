@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>List Formation</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> List schedules</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -17,12 +17,11 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="coL-lg-6 h2">
-                            List Cour in Formation
+                            List schedules
                         </div>
                     </div>
 
                     <div class="table-responsive">
-
                         <div class="row">
                             <form action="">
                                 <div class="col-lg-6">
@@ -38,34 +37,43 @@
                             </form>
                         </div>
 
-                    <div class="table-responsive">
-
-                        <h3>Total Formation: {{ count($cours) }} </h3>
+                        <h3> List Cour: {{ count($schedules) }} </h3>
                         <table class="table table-bordered table-hover tablesorter">
                             <thead>
                             <tr>
-                                <th width="5%">No</th>
+                                <th>No</th>
                                 <th>Intitule</th>
-                                <th width="20%">Created date</th>
+                                <th>Date debut</th>
+                                <th>Date fin</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @if(count($cours) == 0)
+                            @if(count($schedules) == 0)
                                 <tr class="borderless">
-                                    <td colspan="11" class="text-center">No Data</td>
+                                    <td colspan="11" class="text-center">Not Data</td>
                                 </tr>
                             @else
-                                @foreach ($cours as $index => $cour)
+                                @foreach ($schedules as $index => $schedule)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>
-                                            {{ $cour->intitule }}
-                                        </td>
-                                        <td>
                                             <div class="divide-column">
-                                                {{ \Carbon\Carbon::parse($cour->created_at)->format('d-m-Y') }}
+                                                {{ $schedule->intitule }}
                                             </div>
                                         </td>
+
+                                        <td>
+                                            <div class="divide-column">
+                                                {{ $schedule->date_debut }}
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="divide-column">
+                                                {{ $schedule->date_fin }}
+                                            </div>
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             @endif
