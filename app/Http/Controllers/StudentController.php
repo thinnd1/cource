@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Formation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
 {
@@ -63,7 +64,6 @@ class StudentController extends Controller
         $id = Auth::user()->id;
         $user = User::find($id);
         $cours = $user->cours()->get();
-//        dd($user1->pivot->cours_id);
         return view('etudiant/listcour', ['cours' => $cours]);
     }
 
@@ -94,15 +94,5 @@ class StudentController extends Controller
 
     public function getSchedule()
     {
-        $id = Auth::user()->id;
-        $user = User::find($id);
-        $cours = $user->cours()->get();
-        $time = array();
-
-        foreach ($cours as $cour) {
-            $time = Planning::where('cours_id', $cour->pivot->cours_id)->get(['date_debut', 'date_fin']);
-        }
-
-        return view('etudiant/schedule', ['cours' => $cours]);
     }
 }

@@ -76,9 +76,9 @@
                             <label class="col-sm-2 col-form-label">Role</label>
                             <div class="col-sm-10">
                                 <select name="user_type" class="form-control">
-                                    <option value="1" {{ old("user_type") == 1 ? 'selected' : '' }}>Etudiant</option>
-                                    <option value="2" {{ old("user_type") == 2 ? 'selected' : '' }}>Enseignant</option>
-                                    <option value="3" {{ old("user_type") == 3 ? 'selected' : '' }}>Admin</option>
+                                    <option value="etudiant" {{ old("user_type") == 1 ? 'selected' : '' }}>Etudiant</option>
+                                    <option value="enseignant" {{ old("user_type") == 2 ? 'selected' : '' }}>Enseignant</option>
+                                    <option value="admin" {{ old("user_type") == 3 ? 'selected' : '' }}>Admin</option>
                                 </select>
                             </div>
                         </div>

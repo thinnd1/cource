@@ -15,6 +15,8 @@ class User extends Authenticatable
     const TEACHER = 'enseignant';
     const ADMIN = 'admin';
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -56,12 +58,10 @@ class User extends Authenticatable
     public function getAllUser($id, $search = null)
     {
         $listuser = User::where('id', '<>', $id)
-            ->orderBy('created_at', 'DESC')
             ->get();
         if ($search) {
             $listuser = User::where('id', '<>', $id)
                 ->where('login', 'like', '%' . $search . '%')
-                ->orderBy('created_at', 'DESC')
                 ->get();
         }
         return $listuser;
@@ -80,7 +80,7 @@ class User extends Authenticatable
         $user->prenom = $request['first_name'];
         $user->nom = $request['last_name'];
         $user->type = $request['user_type'];
-        $user->formation_id = $request['formation_id'];
+        $user->formation_id = isset($request['formation_id']) ? $request['formation_id'] : '';
         $user->mdp = Hash::make($request['password']);
 
         $user->save();

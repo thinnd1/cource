@@ -16,7 +16,7 @@ class Cours extends Model
 
     public function planning()
     {
-        return $this->hasMany(Planning::class, 'cour_id');
+        return $this->hasMany(Planning::class, 'cours_id');
     }
 
     public function formation()
@@ -31,12 +31,9 @@ class Cours extends Model
 
     public function getCource($search = null)
     {
-        $cource =  Cours::orderBy('created_at', 'DESC')
-            ->get();
+        $cource =  Cours::get();
         if ($search) {
-            $cource = Cours::orderBy('created_at', 'DESC')
-                ->where()
-                ->get();
+            $cource = Cours::get();
         }
         return $cource;
     }

@@ -10,7 +10,7 @@ class Planning extends Model
     protected $fillable = [
         'date_debut',
         'date_fin',
-        'cour_id'
+        'cours_id'
     ];
     protected $table = 'plannings';
 
