@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i> Create Formation</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> Creer Formation</li>
                     </ol>
                 </div>
             </div><!-- /.row -->

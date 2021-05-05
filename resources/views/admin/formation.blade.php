@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>List Formation</li>
+                        <li class="active"><i class="fa fa-dashboard"></i>Liste Formation</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="coL-lg-6 h2">
-                            List Formation
+                            Liste Formation
                         </div>
                     </div>
 
@@ -31,8 +31,8 @@
                                            id="inputformation">
                                 </div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn btn-primary">Search</button>
-                                    <a href="{{ route('getCreateFormation') }}" class="btn btn-primary">Add Formation</a>
+                                    <button type="submit" class="btn btn-primary">Chercher</button>
+                                    <a href="{{ route('getCreateFormation') }}" class="btn btn-primary">Ajouter Formation</a>
                                 </div>
                             </form>
                         </div>
@@ -43,7 +43,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Intitule</th>
-                                <th>Created date</th>
+                                <th>Create date</th>
                                 <th width="10%">Action</th>
                             </tr>
                             </thead>
@@ -67,7 +67,7 @@
                                         <div class="divide-column">
                                             <td>
                                                 <a class="btn btn-warning"
-                                                   href="{{ route('getUpdateFormation', ['id' => $formation->id ]) }}">Edit</a>
+                                                   href="{{ route('getUpdateFormation', ['id' => $formation->id ]) }}">Modifier</a>
 
                                                 <a href="{{ route('deleteFormation', ['id' => $formation->id ]) }}"
                                                    class="btn btn-danger">Delete</a>

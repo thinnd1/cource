@@ -30,8 +30,8 @@
                                            id="inputname">
                                 </div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn btn-primary">Search</button>
-                                    <a href="{{ route('getCreateUser') }}" class="btn btn-primary">Add User</a>
+                                    <button type="submit" class="btn btn-primary">Chercher</button>
+                                    <a href="{{ route('getCreateUser') }}" class="btn btn-primary">Ajouter User</a>
 
                                 </div>
                             </form>
@@ -42,7 +42,7 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Username</th>
+                                <th>Login</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Formation</th>
@@ -54,7 +54,7 @@
                             <tbody>
                             @if(count($users) == 0)
                                 <tr class="borderless">
-                                    <td colspan="11" class="text-center">Not Data</td>
+                                    <td colspan="11" class="text-center">No Data</td>
                                 </tr>
                             @else
                                 @foreach ($users as $index => $user)

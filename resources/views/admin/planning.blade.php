@@ -31,8 +31,8 @@
                                            id="inputformation">
                                 </div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn btn-primary">Search</button>
-                                    <a href="{{ route('getCreatePlanning') }}" class="btn btn-primary">Add Planning</a>
+                                    <button type="submit" class="btn btn-primary">Chercher</button>
+                                    <a href="{{ route('getCreatePlanning') }}" class="btn btn-primary">Ajouter Planning</a>
                                 </div>
                             </form>
                         </div>

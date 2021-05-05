@@ -22,21 +22,21 @@
 
         <div class="form-group">
             <label for="inputUsername">Login</label>
-            <input type="text" name="login" class="form-control username" value="{{ old("login") }}" aria-describedby="emailHelp" placeholder="Login type">
+            <input type="text" name="login" class="form-control username" value="{{ old("login") }}" aria-describedby="emailHelp" placeholder="Votre nom">
         </div>
 
         <div class="form-group">
             <label for="inputPassword">Password</label>
-            <input type="password" name="mdp" class="form-control password" placeholder="Password type">
+            <input type="password" name="mdp" class="form-control password" placeholder="Votre password">
             @error('mdp')
             <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
 
-        <a href="{{ route('signup') }}">Đăng ký tài khoản</a>
+        <a href="{{ route('signup') }}">Register</a>
         <br>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Entrer</button>
 
     </form>
 </div>

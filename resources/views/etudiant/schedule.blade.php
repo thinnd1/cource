@@ -50,7 +50,7 @@
                             <tbody>
                             @if(count($schedules) == 0)
                                 <tr class="borderless">
-                                    <td colspan="11" class="text-center">Not Data</td>
+                                    <td colspan="11" class="text-center">No Data</td>
                                 </tr>
                             @else
                                 @foreach ($schedules as $index => $schedule)

@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>List Formation</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> Liste Formation</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="coL-lg-6 h2">
-                            List Formation
+                            Liste Formation
                         </div>
                     </div>
 
@@ -28,8 +28,8 @@
                                 <tr>
                                     <th width="5%">No</th>
                                     <th>Intitule</th>
-                                    <th>ĐĂng ký</th>
-                                    <th width="20%">Created date</th>
+                                    <th>Inscrire</th>
+                                    <th width="20%">Create date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,7 +45,7 @@
                                                 {{ $cour->intitule }}
                                             </td>
                                             <td>
-                                                <a href="{{ route('createCourceEtudiant', ['id' => $cour->id]) }}">Dang ky</a>
+                                                <a href="{{ route('createCourceEtudiant', ['id' => $cour->id]) }}">Inscrire</a>
                                             </td>
                                             <td>
                                                 <div class="divide-column">

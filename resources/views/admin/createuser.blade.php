@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i> Tạo người dùng</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> Create user</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -17,7 +17,7 @@
                     <form action="{{ route('createUser') }}" method="post">
                         @csrf
                         <div class="form-group row">
-                            <label for="inputusername" class="col-sm-2 col-form-label">User name*</label>
+                            <label for="inputusername" class="col-sm-2 col-form-label">Login*</label>
                             <div class="col-sm-10">
                                 <input type="text" name="username" class="form-control" value="{{ old("username") }}"
                                        id="inputusername">
