@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i> List Cour</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> Liste de cour</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="coL-lg-6 h2">
-                            List Cour
+                            Liste de cour
                         </div>
                     </div>
 
@@ -31,8 +31,8 @@
                                            id="inputname">
                                 </div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn btn-primary">Search</button>
-                                    <a href="{{ route('getCreateCource') }}" class="btn btn-primary">Add Cour</a>
+                                    <button type="submit" class="btn btn-primary">Chercher</button>
+                                    <a href="{{ route('getCreateCource') }}" class="btn btn-primary">Ajouter Cour</a>
                                 </div>
                             </form>
                         </div>
@@ -45,14 +45,14 @@
                                 <th>Intitule</th>
                                 <th>Enseignant</th>
                                 <th>Formation</th>
-                                <th>Created date</th>
+                                <th>Create date</th>
                                 <th width="10%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @if(count($cources) == 0)
                                 <tr class="borderless">
-                                    <td colspan="11" class="text-center">Not Data</td>
+                                    <td colspan="11" class="text-center">No Data</td>
                                 </tr>
                             @else
                                 @foreach ($cources as $index => $cource)
@@ -83,7 +83,7 @@
 
                                         <div class="divide-column">
                                             <td>
-                                                <a class="btn btn-warning" href="{{ route('getUpdateCource', ['id' => $cource->id ]) }}">Edit</a>
+                                                <a class="btn btn-warning" href="{{ route('getUpdateCource', ['id' => $cource->id ]) }}">Modifier</a>
                                                 <a href="{{ route('deleteCource', ['id' => $cource->id ]) }}" class="btn btn-danger"> Delete </a>
                                             </td>
                                         </div>

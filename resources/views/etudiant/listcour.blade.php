@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>khóa hoc đã đăng ký</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> Je m'inscris </li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="coL-lg-6 h2">
-                            Dang ky khoa hoc
+                            Inscrire le cour
                         </div>
                     </div>
 
@@ -28,8 +28,8 @@
                                 <tr>
                                     <th width="5%">No</th>
                                     <th>Intitule</th>
-                                    <th>Cancel cours</th>
-                                    <th width="20%">Created date</th>
+                                    <th>Annuler le cour</th>
+                                    <th width="20%">Create date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,7 +45,7 @@
                                                 {{ $cour->intitule }}
                                             </td>
                                             <td>
-                                                <a href="{{ route('cancelCource', ['id' => $cour->pivot->cours_id]) }}">Cancel</a>
+                                                <a href="{{ route('cancelCource', ['id' => $cour->pivot->cours_id]) }}"> Annuler</a>
                                             </td>
 
                                             <td>

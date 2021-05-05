@@ -18,9 +18,9 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="inputusername" class="col-sm-2 col-form-label">User name*</label>
+                            <label for="inputusername" class="col-sm-2 col-form-label">Login*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="username" class="form-control" value="{{ $editinfor->login }}"
+                                <input type="text" name="username" class="form-control" value="{{ $editinfor ?? '' ?? ''->login }}"
                                        id="inputusername">
                                 @error('username')
                                 <p class="text-danger">{{ $message }}</p>
@@ -31,7 +31,7 @@
                         <div class="form-group row">
                             <label for="inputpass" class="col-sm-2 col-form-label">Password*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="password" class="form-control" value="{{ $editinfor->mdp }}"
+                                <input type="text" name="password" class="form-control" value="{{ $editinfor ?? '' ?? ''->mdp }}"
                                        id="inputpass">
                                 @error('password')
                                 <p class="text-danger">{{ $message }}</p>
@@ -43,7 +43,7 @@
                             <label for="inputusername" class="col-sm-2 col-form-label">Nom*</label>
                             <div class="col-sm-10">
                                 <input type="text" name="first_name" class="form-control"
-                                       value="{{ $editinfor->nom }}"
+                                       value="{{ $editinfor ?? '' ?? ''->nom }}"
                                        id="inputfirstname">
                                 @error('first_name')
                                 <p class="text-danger">{{ $message }}</p>
@@ -54,7 +54,7 @@
                         <div class="form-group row">
                             <label for="inputusername" class="col-sm-2 col-form-label">Prenom*</label>
                             <div class="col-sm-10">
-                                <input type="text" name="last_name" class="form-control" value="{{ $editinfor->prenom }}"
+                                <input type="text" name="last_name" class="form-control" value="{{ $editinfor ?? '' ?? ''->prenom }}"
                                        id="inputlastname">
                                 @error('last_name')
                                 <p class="text-danger">{{ $message }}</p>

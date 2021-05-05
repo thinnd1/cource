@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>Update User</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> Update User</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -18,7 +18,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="inputusername" class="col-sm-2 col-form-label">User name*</label>
+                            <label for="inputusername" class="col-sm-2 col-form-label">Login*</label>
                             <div class="col-sm-10">
                                 <input type="text" name="username" class="form-control" value="{{ $editinfor->login }}"
                                        id="inputusername">

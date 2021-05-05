@@ -7,27 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 
-    <title> Đặng ký </title>
+    <title> Register </title>
 </head>
 <body>
 <div class="container">
-    <h2>Đăng ký thành viên</h2>
+    <h2>Register User </h2>
     <form class="form-signup" action="{{ route('signup') }}" method="post">
         @csrf
 
         <div class="form-group">
-            <label for="inputUsername">Tên Đăng Nhập*</label>
+            <label for="inputUsername">Login*</label>
             <input type="text" name="username" class="form-control username" value="{{ old("username") }}" id="inputUsername"
-                   placeholder="Nhập tên đăng nhập">
+                   placeholder="Entrez votre nom">
             @error('username')
             <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
 
         <div class="form-group">
-            <label for="inputPassword">Mật Khẩu*</label>
+            <label for="inputPassword">Password*</label>
             <input type="password" name="mdp" class="form-control password" value="{{ old("mdp") }}" id="inputPassword"
-                   placeholder="Nhập mật khẩu">
+                   placeholder="Entrez votre password">
             @error('password')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -50,8 +50,8 @@
             </select>
         </div>
 
-        <p>Đã có tài khoản, <a href="{{ route('login') }}"> Login </a></p>
-        <button type="submit" class="btn btn-primary">Đăng ký</button>
+        <p>Deja registe, <a href="{{ route('login') }}"> Login </a></p>
+        <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
 </div>
 

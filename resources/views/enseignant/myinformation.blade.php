@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>My Information</li>
+                        <li class="active"><i class="fa fa-dashboard"></i> Mon Information </li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group row">
-                        <label for="inputUser" class="col-sm-2 col-form-label">Username</label>
+                        <label for="inputUser" class="col-sm-2 col-form-label">Login</label>
                         <div class="col-sm-10">
                             {{ $user->login }}
                         </div>
@@ -41,13 +41,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputUser" class="col-sm-2 col-form-label">Created date</label>
+                        <label for="inputUser" class="col-sm-2 col-form-label">Create date</label>
                         <div class="col-sm-10">
                             {{ $user->created_at }}
                         </div>
                     </div>
 
-                    <a class="btn btn-warning" href="{{ route('getUpdateInformationLecture') }}">Sửa</a>
+                    <a class="btn btn-warning" href="{{ route('getUpdateInformationLecture') }}">Modifier</a>
                 </div>
             </div>
         </div>
