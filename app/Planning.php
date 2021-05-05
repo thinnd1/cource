@@ -13,6 +13,7 @@ class Planning extends Model
         'cours_id'
     ];
     protected $table = 'plannings';
+    public $timestamps = false;
 
     public function cours()
     {

@@ -171,8 +171,8 @@ class AdminController extends Controller
 
     public function getUpdateFormation($id)
     {
-        $formation = $this->formation->getDetail($id);
-        return view('admin/editformation', ['formation' => $formation]);
+        $editinfor = $this->formation->getDetail($id);
+        return view('admin/editformation', ['editinfor' => $editinfor]);
     }
 
     public function updateFormation(Request $request, $id)

@@ -47,8 +47,7 @@ class User extends Authenticatable
 
     public function getUserConfirm()
     {
-        return User::where('active_flg','<>', self::USER_ACTIVE)
-            ->get();
+        return User::get();
     }
     public function getTeacher()
     {
@@ -62,6 +61,8 @@ class User extends Authenticatable
         if ($search) {
             $listuser = User::where('id', '<>', $id)
                 ->where('login', 'like', '%' . $search . '%')
+                ->orwhere('nom', 'like', '%' . $search . '%')
+                ->orwhere('prenom', 'like', '%' . $search . '%')
                 ->get();
         }
         return $listuser;
@@ -93,6 +94,8 @@ class User extends Authenticatable
         $user->login = $request['username'];
         $user->type = $request['user_type'];
         $user->formation_id = $request['formation_id'];
+        $user->nom = $request['nom'];
+        $user->prenom = $request['prenom'];
         $user->mdp = Hash::make($request['mdp']);
 
         $user->save();
@@ -141,8 +144,6 @@ class User extends Authenticatable
     public function confirmUser($id)
     {
         $confirmUser = User::findOrFail($id);
-
-        $confirmUser->active_flg = 1;
 
         $confirmUser->save();
     }

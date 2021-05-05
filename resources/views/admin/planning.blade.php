@@ -70,7 +70,7 @@
                                         <div class="divide-column">
                                             <td>
                                                 <a class="btn btn-warning"
-                                                   href="{{ route('getUpdatePlanning', ['id' => $plan->id ]) }}">Edit</a>
+                                                   href="{{ route('getUpdatePlanning', ['id' => $plan->id ]) }}">Modifier</a>
 
                                                 <a href="{{ route('deletePlaning', ['id' => $plan->id ]) }}" class="btn btn-danger">Delete</a>
                                             </td>

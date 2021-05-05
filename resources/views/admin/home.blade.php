@@ -82,9 +82,9 @@
                                         </td>
                                         <td>
                                             <div class="divide-column">
-                                                @if($user->type == 1)
+                                                @if($user->type == 'etudiant')
                                                     Etudiant
-                                                @elseif ($user->type == 2)
+                                                @elseif ($user->type == 'enseignant')
                                                     Enseignant
                                                 @else
                                                     Admin
@@ -99,7 +99,7 @@
                                         </td>
                                         <div class="divide-column">
                                             <td>
-                                                <a class="btn btn-warning" href="{{ route('getUpdateUser', ['id' => $user->id ]) }}">Edit</a>
+                                                <a class="btn btn-warning" href="{{ route('getUpdateUser', ['id' => $user->id ]) }}">Modifier</a>
 
                                                 <a href="{{ route('deleteUser', ['id' => $user->id ]) }}" class="btn btn-danger">Delete</a>
                                             </td>

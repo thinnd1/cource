@@ -18,7 +18,7 @@
         <div class="form-group">
             <label for="inputUsername">Login*</label>
             <input type="text" name="username" class="form-control username" value="{{ old("username") }}" id="inputUsername"
-                   placeholder="Entrez votre nom">
+                   placeholder="Entrez votre login">
             @error('username')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -40,6 +40,24 @@
                     <option value="{{ $format->id }}">{{ $format->intitule }}</option>
                 @endforeach
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="inputUsername">Nom*</label>
+            <input type="text" name="nom" class="form-control username" value="{{ old("nom") }}" id="inputnom"
+                   placeholder="Entrez votre nom">
+            @error('username')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="inputUsername">Prenom*</label>
+            <input type="text" name="prenom" class="form-control username" value="{{ old("prenom") }}" id="inputprenom"
+                   placeholder="Entrez votre prenom">
+            @error('prenom')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="form-group">

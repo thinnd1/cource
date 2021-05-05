@@ -25,11 +25,9 @@
                                 <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Username</th>
+                                    <th>Login</th>
                                     <th>Nom</th>
                                     <th>Prenom</th>
-                                    <th>Email</th>
-                                    <th width="10%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -55,14 +53,6 @@
                                             <td>
                                                 <div class="divide-column">
                                                     {{ $user->nom }}
-                                                </div>
-                                            </td>
-
-                                            <td>
-                                                <div class="divide-column">
-                                                    <a href="{{ route('acceptRegiter', ['id' => $user->id ]) }}" class="btn btn-warning" name="active_flg" >
-                                                        Confirm
-                                                    </a>
                                                 </div>
                                             </td>
                                         <tr>
