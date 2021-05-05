@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,7 +32,7 @@ class Cours extends Model
 
     public function getCource($search = null)
     {
-        $cource =  Cours::get();
+        $cource = Cours::get();
         if ($search) {
             $cource = Cours::get();
         }
@@ -50,6 +51,28 @@ class Cours extends Model
 
         $cour->intitule = $request['intitule'];
         $cour->user_id = $request['user_id'];
+        $cour->formation_id = $request['formation_id'];
+
+        $cour->save();
+    }
+
+    public function createCourenseignant($request, $id)
+    {
+        $cour = new Cours();
+
+        $cour->intitule = $request['intitule'];
+        $cour->user_id = $id;
+        $cour->formation_id = $request['formation_id'];
+
+        $cour->save();
+    }
+
+    public function updateCourceenseignant($id, $request)
+    {
+        $cour = Cours::findOrFail($id);
+
+        $cour->intitule = $request['intitule'];
+        $cour->user_id = Auth::user()->id;
         $cour->formation_id = $request['formation_id'];
 
         $cour->save();

@@ -59,14 +59,25 @@ Route::middleware(['checktype:student'])->prefix('etudiant')->group(function(){
 
 });
 
-
 //lecture
 Route::middleware(['checktype:teacher'])->prefix('enseignant')->group(function(){
     Route::get('/information','LectureController@getInformation')->name('getInformationLecture');
     Route::get('/editinformation','LectureController@getUpdateInformation')->name('getUpdateInformationLecture');
     Route::post('/updateuser','LectureController@updateInformation')->name('updateUserLecture');
     Route::get('/getcour','LectureController@getCourByTeacher')->name('getCourByTeacher');
-//    Route::get('/getcour','LectureController@getCourByTeacher')->name('getCourByTeacher');
     Route::get('/getschedule','LectureController@getSchedule')->name('getSchedule');
+    Route::get('/getCreateCourceEnseignant','LectureController@getCreateCourceEnseignant')->name('getCreateCourceEnseignant');
+    Route::post('/createCourse','LectureController@createCourse')->name('createCourseEnseignant');
+
+    Route::get('/getUpdateCourceEnseignant/{id}','LectureController@getUpdateCourceEnseignant')->name('getUpdateCourceEnseignant');
+    Route::post('/updateCourceEnseignant/{id}','LectureController@updateCourceEnseignant')->name('updateCourceEnseignant');
+    Route::get('/delete/{id}','LectureController@delete')->name('deleteEnseignant');
+
+    Route::get('/getplanning','LectureController@getPlanning')->name('getPlanningEnseignant');
+    Route::get('/getcreateplanning','LectureController@getCreatePlanning')->name('getCreatePlanningEnseignant');
+    Route::post('/createplanning','LectureController@createPlanning')->name('createPlanningEnseignant');
+    Route::get('/getupdateplanning/{id}','LectureController@getUpdatePlanning')->name('getUpdatePlanningEnseignant');
+    Route::post('/updateplanning/{id}','LectureController@updatePlaning')->name('updatePlaningEnseignant');
+    Route::get('/deletePlaning/{id}','LectureController@deletePlaning')->name('deletePlaningEnseignant');
 
 });
